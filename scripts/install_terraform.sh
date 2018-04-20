@@ -15,4 +15,3 @@ then
 fi
 
 ln -sf ${TERRAFORM_DL}/terraform ${TOOLS_DIR}/bin
-terraform version

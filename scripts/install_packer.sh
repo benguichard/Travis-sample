@@ -15,4 +15,3 @@ then
 fi
 
 ln -sf ${PACKER_DL}/packer ${TOOLS_DIR}/bin
-packer version
