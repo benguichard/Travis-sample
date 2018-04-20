@@ -6,7 +6,7 @@ git:
 
 env:
   global:
-  - TOOLS_DIR=$HOME/tools
+  - TOOLS_DIR=/tmp/tools
   - PACKER_VERSION=1.2.2
   - TERRAFORM_VERSION=0.11.7
   - AWS_REGION=eu-west-3
@@ -30,7 +30,6 @@ before_deploy:
 deploy:
   skip_cleanup:  true
   provider:      script
-  script:
-  - scripts/pack_and_deploy.sh $TRAVIS_BUILD_DIR $TRAVIS_COMMIT $TRAVIS_BUILD_ID $TRAVIS_BUILD_NUMBER
+  script:        bash scripts/build2deploy.sh $TRAVIS_BUILD_DIR $TRAVIS_COMMIT $TRAVIS_BUILD_ID $TRAVIS_BUILD_NUMBER
   on:
     branch:      master
