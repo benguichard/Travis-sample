@@ -7,7 +7,7 @@ BUILD_ID="$3_$4"
 
 PACKER_DIR=$BUILD_DIR/packer
 
-packer build -force \
+$TOOLS_DIR/bin/packer build -force \
   -var "site_dir=$BUILD_DIR/www" \
   -var "commit=$COMMIT" \
   -var "build_id=$BUILD_ID" \
