@@ -1,0 +1,36 @@
+language:        php
+sudo:            false
+
+git:
+  depth:         false
+
+env:
+  global:
+  - TOOLS_DIR=$HOME/tools
+  - PACKER_VERSION=1.2.2
+  - TERRAFORM_VERSION=0.11.7
+  - AWS_REGION=eu-west-3
+  - secure:      iyS0s6F7edntLwR7nrKRP2TgSBmNnqiKI8ilTX7GVif1pOXn0RGn6wCxXgvQYWOrOz5bj0B97IZQirZyx8wTA/H4+XtamxoeRWrNoLtY//DMliQMdTtcQ3FN2jfZJ8m1Gzb1IVWXXPbzD6+RNviIhOPQiZzdHjzdPLI1gv1oZSO8LKdXt9mGrQTvWj6hZ5G4EsEBrPb8RyMVtjcAeyr4qye/NKJtXVE6bCRFjvSfQ6541NpjBd4si6WNk384iiWCCcoawPogrTFXfTmOaKMKdXtoUBIX0gQaCUzqBrQdLWnbpHLasKBlcrRU4AfosGUzioV6aDKQ5lOW/8NE4vpb77vjoDp/miGZXjHNFgEujd0YIM66QMA0wLgInKY5rch9eGeOBwybFesv83F90XTjIKeWeF0qv24QLl1Fc8jV5mjXlkVAJfPcCeA00Kx0d+18Cdmju+4tYbdRdnk1tQ222gdxJvmpeJoicDjxJ8q6/+O8UybwUB3dJoXg8Lj7tQMFnH6V/nKrIreQd3Fb618oFHLXAJvccAgSYYh43+yIMA/C4OBqO3/FljoVuD4fd9ZVR+g4bya6Wg3zkde9EJyCVfawU501+dlmbEKsaWFW7XOd0ds9UtBFVkY8oZOjWtVXewfWC1yBycd5wb7YzdTyCop+6yDJzQMnR8DJRY39aPc=
+  - secure:      k3i/dBN0OFnCiCn8Zrg28OFryFyBR2OKHasOkm/bHqg1aBnx+cFfz4Tvgtg+ydlHOIFVGKOjmeweeqzTSRm09rhmC1wcZAfK/UwQ4rVBjCxNdm0eC1MnibXe2h/RBdKw+DIDk2F019QepbxuVv/4rO8xZBg8lsIGlubD0Hdze3yDUYS8AbT5/JE1gsmDX1ah4YKOSTMj9xbxEYqhfCNeYYJ0VC4ybuffPCMVUiRAQadsl3id057MedAzHajiEgLkWdMBhe73DzqD7PxajEn/pLGrlIibli+3ccHPiXOqWaFj1G4JORuZy8ZLDr5KRQwRyyVwj6CefMM/yJYAZHY4GkwfTWHKStef48qHBoQ6cOvdx7AYQy0N5auOmN2wowTwPPExKu/H3kc2gg8Ig5P46u/K8XcxbZge9UVYaeCs+e+lwUzQIB9e3QChGPloXmayzw/Qhsux2W/0TdC6La8JKSQQw5eyPPP0SNLxqB/2jJ5p6mhFKcQmbIaW6eJaOz+up6XHjkOxAJJ9pC1Zvo3rpahf1JXc0c1kEd9cTvltbN3D114wNGpOhxtpjUqMXpftE6KsVPswNnloc0G/fxWLVm7HnHiva74dSIRu6hFMe84yaORv1nL8R/s9KUr/6s0sTChaOST2YKOLtpYPg3A4noohOrkJF0izAu+DhBpAJAM=
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y jq
+
+php:
+  - '7.1'
+
+script:          php --version
+
+before_deploy:
+- bash scripts/install_packer.sh
+- bash scripts/install_terraform.sh
+- export PATH=$PATH:$TOOLS_DIR/bin
+
+deploy:
+  skip_cleanup:  true
+  provider:      script
+  script:
+  - scripts/pack_and_deploy.sh $TRAVIS_BUILD_DIR $TRAVIS_COMMIT $TRAVIS_BUILD_ID $TRAVIS_BUILD_NUMBER
+  on:
+    branch:      master
