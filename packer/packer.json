@@ -1,0 +1,54 @@
+{
+  "variables": {
+    "site_dir": null,
+    "project": "demo",
+    "commit": "unknown",
+    "build_id": null
+  },
+  "builders": [{
+    "ami_description": "{{user `project`}}, commit: {{user `commit`}}",
+    "ami_name": "{{user `project`}}-{{user `build_id`}}",
+    "force_deregister": "true",
+    "instance_type": "t2.micro",
+    "region": "eu-west-3",
+    "source_ami_filter": {
+      "filters": {
+        "virtualization-type": "hvm",
+        "name": "*ubuntu-xenial-16.04-amd64-server-*",
+        "root-device-type": "ebs"
+      },
+      "owners": ["099720109477"],
+      "most_recent": true
+    },
+    "ssh_username": "ubuntu",
+    "type": "amazon-ebs"
+  }],
+  "provisioners": [{
+      "type": "shell",
+      "inline": [
+        "sleep 10",
+        "mkdir -p /tmp/www"
+      ]
+    },
+    {
+      "type": "shell",
+      "script": "{{template_dir}}/scripts/install_packages.sh",
+      "execute_command": "{{ .Vars }} sudo -E sh '{{ .Path }}'"
+    },
+    {
+      "type": "file",
+      "source": "{{user `site_dir`}}",
+      "destination": "/tmp/html"
+    },
+    {
+      "type": "shell",
+      "script": "{{template_dir}}/scripts/config_site.sh",
+      "execute_command": "{{ .Vars }} sudo -E sh '{{ .Path }}'"
+    }
+  ],
+  "post-processors": [{
+    "type": "manifest",
+    "output": "manifest.json",
+    "strip_path": true
+  }]
+}
