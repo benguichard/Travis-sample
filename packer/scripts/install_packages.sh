@@ -4,8 +4,8 @@ set -x
 
 # install required packages
 export DEBIAN_FRONTEND=noninteractive
-apt-get update -q
-apt-get install -y apache2
+apt-get -q update
+apt-get -q -y install apache2
 
 ## Clear unneeded binaries
 apt-get autoclean
