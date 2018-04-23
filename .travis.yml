@@ -24,7 +24,6 @@ before_deploy:
 deploy:
   skip_cleanup: true
   provider: script
-  script: bash scripts/build2deploy.sh $TRAVIS_BUILD_DIR $TRAVIS_COMMIT $TRAVIS_BUILD_ID
-    $TRAVIS_BUILD_NUMBER
+  script: bash scripts/build2deploy.sh $TRAVIS_BUILD_DIR $TRAVIS_COMMIT $TRAVIS_BUILD_ID $TRAVIS_BUILD_NUMBER
   on:
-    branch: master
+    branch: deploy
