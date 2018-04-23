@@ -1,29 +1,37 @@
-language: php
-sudo: false
+language:        php
+
+sudo:            false
+
 git:
-  depth: false
+  depth:         false
+
 env:
   global:
   - TOOLS_DIR=/tmp/tools
   - PACKER_VERSION=1.2.2
   - TERRAFORM_VERSION=0.11.7
   - AWS_REGION=eu-west-3
-  - secure: IueFEvUW/5GbvFQ3V/lImWXJvnRxIWKob5b+SL0Y99f+hOlT9glC+r7IwUYh3S9+3ulUbnyDxBR4iILyIyCVCzjHsc6voocvcwuZ/M7fs3+Eb48YGG8MOkWEeOhrmlV4mL0nf3X4QfCto+XV0+tlcFsY95rYbYUYqXAvbyv7DzEz//Z3iU1gACfhK12Wcqjk2JLaydnF6nWjXUSiaGKTr+iAI0atb7sB+qEFnqvv9/3SpLvF65GwPKWRhQc2IZLjWzL9Crs1mX7qRO/Zrm0kPvpqprzKqN+TlGzC9Yu4UbfpcCALIbS5f2BMj5VEQOnFZmJ7pdJBIC3qmcMB7+XmlneoKwp+7AmRiIjtTsaZqMAGkPR9zoRD8nVUApj+XUiNoCCR+lbKZfTh3u5tlp3fiVac8Hh3zU6uysu1wP0seKcy98dveVfLXRVZjZ+FjSllfcHHZ9UDIIDaTeJbUKSSkxcYrg8W54RHMV7pMArsfVc4gbqeik84jZEAC6OmPkMO8ZGRWuFgMDURj99h3QO9cg8qTr+OhDUaLKQw62LayfS97GOra7Z5OXbL0oj3PZ/+FFga6JTcxRl8jGyWqPEXEA/zI9ta3aZ5FpmPnP+14yLsPJAx9t3TwFVC43ErR+ocUKWEnNOGoGeXt2n5Rkz+bjhenndyAjNGs5HhYG3gTeg=
-  - secure: jgmo+L0wqlv9JcV5Gqc9951rlbhhtDzX5h0itn9VLYQuIiS228Iov8mWNPuYD+MsPDdYXyPMffPLuHIj4jAYeidaBtrQ8SKZUfCcSch7rGMdK9p4kmmSSDFFgbIZiFfBlwgCs8rbftrEHKkQOcqWxOFVTcEEZu+aOibu4lAZpDXuuBpX3gvwaEm/qxtWp0NNtDtGPQwwQprVLhWwBm+ABD0yE4FNv3yC2wR0oWc+V4XTEa/zoXDjuAHGXce/2g/R9Fs+ueMSr9oCtMaDF3ocCgUaP+6ks66aIhRWn6XJyyt0tZhWMEdOtRLgsveG3EOdr7lwqfRjpaDVXYgKvdOFUrDS1OU3B9Cd4CYi0mavh2X/HdxgCd/XnJhxZX9zQ1nH91yyI86yEMKQy71rfRCFRmeISeBMK028rwmbofPKT1EnpmdTeGwhECkOCXE3aQukUKOVQnI2sdE3Luf2+GFwJS9LhdWoUfSiWqcV+dyRyTAzQnAT29on7b59m1Wtf5gXQZtk8Sf5gPqXcXUCVmwJskCDUzTZRGwAL73o9H+9k2DxJAR/g+5KIC8Tbmx9P0osisBKN+HDCUoKqGey4ukW0gv0Lz5QvuE0SJZBnVIg1AEjBeFfShYoRetbk3buM3cd9QtFv+voO6BYdOzBYrLiyWd3yVK8UQvDw7gya4QTWk4=
+  - secure:      IueFEvUW/5GbvFQ3V/lImWXJvnRxIWKob5b+SL0Y99f+hOlT9glC+r7IwUYh3S9+3ulUbnyDxBR4iILyIyCVCzjHsc6voocvcwuZ/M7fs3+Eb48YGG8MOkWEeOhrmlV4mL0nf3X4QfCto+XV0+tlcFsY95rYbYUYqXAvbyv7DzEz//Z3iU1gACfhK12Wcqjk2JLaydnF6nWjXUSiaGKTr+iAI0atb7sB+qEFnqvv9/3SpLvF65GwPKWRhQc2IZLjWzL9Crs1mX7qRO/Zrm0kPvpqprzKqN+TlGzC9Yu4UbfpcCALIbS5f2BMj5VEQOnFZmJ7pdJBIC3qmcMB7+XmlneoKwp+7AmRiIjtTsaZqMAGkPR9zoRD8nVUApj+XUiNoCCR+lbKZfTh3u5tlp3fiVac8Hh3zU6uysu1wP0seKcy98dveVfLXRVZjZ+FjSllfcHHZ9UDIIDaTeJbUKSSkxcYrg8W54RHMV7pMArsfVc4gbqeik84jZEAC6OmPkMO8ZGRWuFgMDURj99h3QO9cg8qTr+OhDUaLKQw62LayfS97GOra7Z5OXbL0oj3PZ/+FFga6JTcxRl8jGyWqPEXEA/zI9ta3aZ5FpmPnP+14yLsPJAx9t3TwFVC43ErR+ocUKWEnNOGoGeXt2n5Rkz+bjhenndyAjNGs5HhYG3gTeg=
+  - secure:      jgmo+L0wqlv9JcV5Gqc9951rlbhhtDzX5h0itn9VLYQuIiS228Iov8mWNPuYD+MsPDdYXyPMffPLuHIj4jAYeidaBtrQ8SKZUfCcSch7rGMdK9p4kmmSSDFFgbIZiFfBlwgCs8rbftrEHKkQOcqWxOFVTcEEZu+aOibu4lAZpDXuuBpX3gvwaEm/qxtWp0NNtDtGPQwwQprVLhWwBm+ABD0yE4FNv3yC2wR0oWc+V4XTEa/zoXDjuAHGXce/2g/R9Fs+ueMSr9oCtMaDF3ocCgUaP+6ks66aIhRWn6XJyyt0tZhWMEdOtRLgsveG3EOdr7lwqfRjpaDVXYgKvdOFUrDS1OU3B9Cd4CYi0mavh2X/HdxgCd/XnJhxZX9zQ1nH91yyI86yEMKQy71rfRCFRmeISeBMK028rwmbofPKT1EnpmdTeGwhECkOCXE3aQukUKOVQnI2sdE3Luf2+GFwJS9LhdWoUfSiWqcV+dyRyTAzQnAT29on7b59m1Wtf5gXQZtk8Sf5gPqXcXUCVmwJskCDUzTZRGwAL73o9H+9k2DxJAR/g+5KIC8Tbmx9P0osisBKN+HDCUoKqGey4ukW0gv0Lz5QvuE0SJZBnVIg1AEjBeFfShYoRetbk3buM3cd9QtFv+voO6BYdOzBYrLiyWd3yVK8UQvDw7gya4QTWk4=
 
 before_install:
 - sudo apt-get -qq update
 - sudo apt-get install -y jq
+
 php:
 - '7.1'
-script: php --version
+
+script:          php --version
+
 before_deploy:
 - bash scripts/install_packer.sh
 - bash scripts/install_terraform.sh
 - export PATH=$PATH:$TOOLS_DIR/bin
+
 deploy:
-  skip_cleanup: true
-  provider: script
-  script: bash scripts/build2deploy.sh $TRAVIS_BUILD_DIR $TRAVIS_COMMIT $TRAVIS_BUILD_ID $TRAVIS_BUILD_NUMBER
+  skip_cleanup:  true
+  provider:      script
+  script:        bash scripts/build2deploy.sh $TRAVIS_BUILD_DIR $TRAVIS_COMMIT $TRAVIS_BUILD_ID $TRAVIS_BUILD_NUMBER
   on:
-    branch: deploy
+    branch:      master
+    condition:   "$TRAVIS_COMMIT_MESSAGE = *\"[deploy]\"*"
