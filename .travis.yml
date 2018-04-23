@@ -3,7 +3,7 @@ language:        php
 sudo:            false
 
 git:
-  depth:         false
+  depth:         3
 
 env:
   global:
