@@ -8,7 +8,6 @@ variable "region" {}
 variable "vpc_name" {}
 variable "base_network" {}
 variable "public_networks" {}
-variable "private_networks" {}
 
 ### PROVIDER ###
 
@@ -23,6 +22,28 @@ resource "aws_vpc" "main" {
 
   tags {
     Name = "${var.vpc_name}"
+  }
+}
+
+### SUBNETS ###
+
+resource "aws_subnet" "public-subnet" {
+  vpc_id                  = "${aws_vpc.main.id}"
+  cidr_block              = "${var.public_networks}"
+  map_public_ip_on_launch = "true"
+
+  tags {
+    Name = "Public - ${var.public_networks}"
+  }
+}
+
+### ROUTES TABLES ###
+
+resource "aws_internet_gateway" "gw" {
+  vpc_id = "${aws_vpc.main.id}"
+
+  tags {
+    Name = "${var.vpc_name}-IGW"
   }
 }
 
