@@ -1,23 +1,9 @@
-terraform {
-  backend "s3" {
-    bucket = "bguichard-paris-bucket"
-    key    = "demo/terraform/terraform.tfstate"
-    region = "eu-west-3"
-  }
-}
-
 ### VARIABLES ###
 
 variable "region" {}
 variable "vpc_name" {}
 variable "base_network" {}
 variable "public_networks" {}
-
-### PROVIDER ###
-
-provider "aws" {
-  region = "${var.region}"
-}
 
 ### VPC ###
 
