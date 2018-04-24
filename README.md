@@ -5,8 +5,9 @@
 A continuous integration/deployment app sample
 
 -   [Deploy the application](#deploy-the-application)
+-   [Environment and Tools versions](#environment-and-tools-versions)
 
-### Environment & Tools versions
+## Environment and Tools versions
 
 |   **Name**  |   Ubuntu  | Packer | Terraform |
 | :---------: | :-------: | :----: | :-------: |
