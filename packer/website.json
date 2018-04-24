@@ -10,7 +10,6 @@
     "ami_name": "{{user `project`}}-{{user `build_id`}}",
     "force_deregister": "true",
     "instance_type": "t2.micro",
-    "region": "eu-west-3",
     "source_ami_filter": {
       "filters": {
         "virtualization-type": "hvm",
