@@ -1,7 +1,3 @@
-### GLOBAL ###
-
-region            = "eu-west-3"
-
 ### VPC ###
 
 vpc_name          = "demo-vpc"

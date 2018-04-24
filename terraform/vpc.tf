@@ -1,6 +1,5 @@
 ### VARIABLES ###
 
-variable "region" {}
 variable "vpc_name" {}
 variable "base_network" {}
 variable "public_networks" {}
