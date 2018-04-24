@@ -17,15 +17,15 @@ $TOOLS_DIR/bin/packer validate \
   -var "site_dir=$BUILD_DIR/www" \
   -var "commit=$COMMIT" \
   -var "build_id=$BUILD_ID" \
-  website.json
+  $PACKER_DIR/website.json
 
 # Creation and upload of the AMI
 $TOOLS_DIR/bin/packer build -force \
   -var "site_dir=$BUILD_DIR/www" \
   -var "commit=$COMMIT" \
   -var "build_id=$BUILD_ID" \
-  $PACKER_DIR/packer.json \
-  website.json
+  $PACKER_DIR/website.json
+
 
 ### TERRAFORM DEPLOYMENT ###
 
