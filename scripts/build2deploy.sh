@@ -36,5 +36,5 @@ rm -rf .terraform
 terraform init
 terraform validate  -var "web_ami=$AMI"
 terraform plan      -var "web_ami=$AMI"
-terraform apply     -var "web_ami=$AMI"
+terraform apply     -var "web_ami=$AMI" -auto-approve
 popd
