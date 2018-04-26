@@ -29,7 +29,7 @@ $TOOLS_DIR/bin/packer build -force \
 
 ### TERRAFORM DEPLOYMENT ###
 
-AMI=`jq -r '.builds[0].artifact_id[-12:]' manifest.json`
+AMI=`jq -r '.builds[0].artifact_id[-21:]' manifest.json`
 
 pushd $TERRAFORM_DIR
 rm -rf .terraform
